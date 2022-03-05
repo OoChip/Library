@@ -78,6 +78,7 @@ function reset(){
     autorValid = false
     titleValid = false
     pagesValid = false
+    location.href = "#"
 }
 
 function draw (newBook){
@@ -142,7 +143,6 @@ function eraseBook (e){
 
 function eraseBookInTable(id){
     let tdToErase = document.getElementById (`book${id}`)
-    console.log(tdToErase);
     tdToErase.parentElement.removeChild(tdToErase);
 }
 
