@@ -26,6 +26,10 @@ function addBookToLibrary(newBook) {
 
 function createAndAddBook (e){
    addBookToLibrary (new Book(autor.value, title.value, pages.value, readed.checked))
+    autor.value = ""
+    title.value = ""
+    pages.value = ""
+    readed = false
 }
 
 function draw (newBook){
