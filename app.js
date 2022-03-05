@@ -49,7 +49,21 @@ function draw (newBook){
                 newTd.innerText = newBook.pages
                 break
             case 4:
-                newTd.innerText = newBook.readed
+                let label = document.createElement("label")
+                label.className = "switch"
+                let input = document.createElement("input")
+                input.type = "checkbox"
+                input.className = "readed"
+                let span = document.createElement("span")
+                span.className = "slider"
+                label.appendChild(input)
+                label.appendChild(span)
+                newTd.appendChild(label)
+                if (newBook.readed){
+                    input.checked = true
+                }else{
+                    input.checked = false
+                }
                 break
             case 5:
                 let erase = document.createElement ("img")
@@ -79,7 +93,6 @@ function eraseBookInTable(id){
     console.log(tdToErase);
     tdToErase.parentElement.removeChild(tdToErase);
 }
-
 
 addBookToLibrary (new Book("Serafin Masparrote", "Biologia 8°", 124, true));
 addBookToLibrary (new Book("Galileo Galilei", "Diagrama Veritate", 43, false));
