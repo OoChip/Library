@@ -27,7 +27,7 @@ h1{
 }
 
 
-.container{
+.form{
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 1rem;
@@ -46,6 +46,14 @@ h1{
     font-size: 2rem;
     background-color: blue;
     box-shadow: .3rem .3rem green;
+}
+
+.form [required]:valid{
+    border: 2px solid green;
+}
+
+.form [required]:invalid{
+    border: 2px solid red;
 }
 
 /* The switch - the box around the slider */

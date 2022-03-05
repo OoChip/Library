@@ -1,12 +1,43 @@
-const myLibrary = [];
 const autor = document.getElementById ("autor")
 const title = document.getElementById("title")
 const pages = document.getElementById("pages")
 const readed = document.getElementById("readed")
-const addButton = document.getElementById("add");
-addButton.addEventListener("click", createAndAddBook);
-
+const addButton = document.getElementById("add")
 const table = document.getElementById("table")
+
+const myLibrary = [];
+let autorValid = false
+let titleValid = false
+let pagesValid = false
+
+
+autor.addEventListener("blur", checkValidityOfInput)
+title.addEventListener("blur", checkValidityOfInput)
+pages.addEventListener("blur", checkValidityOfInput)
+addButton.addEventListener("click", createAndAddBook)
+
+function checkValidityOfInput (e){
+    let target = e.target.name
+
+    switch (target){
+        case "autor":
+            if (e.target.validity.valid)
+            autorValid = true
+            break
+        case "title":
+            if (e.target.validity.valid)
+            titleValid = true
+            break
+        case "pages":
+            if (e.target.validity.valid)
+            pagesValid = true
+            break
+    }
+
+     if (autorValid && titleValid && pagesValid){
+        addButton.disabled = false
+     }
+}
 
 class Book {
     constructor(autor, title, pages, readed) {
@@ -25,11 +56,11 @@ function addBookToLibrary(newBook) {
 }
 
 function createAndAddBook (e){
-   addBookToLibrary (new Book(autor.value, title.value, pages.value, readed.checked))
+    addBookToLibrary (new Book(autor.value, title.value, pages.value, readed.checked))
     autor.value = ""
     title.value = ""
     pages.value = ""
-    readed = false
+    addButton.disabled = true
 }
 
 function draw (newBook){
