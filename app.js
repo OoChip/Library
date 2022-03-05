@@ -17,11 +17,7 @@ pages.addEventListener("blur", checkValidityOfInput)
 addButton.addEventListener("click", createAndAddBook)
 
 function checkValidityOfInput (e){
-    
     let target = e.target.name
-
-    console.log(target, " ", e.target.validity.valid);
-
     switch (target){
         case "autor":
             if (e.target.validity.valid){
@@ -152,3 +148,5 @@ function eraseBookInTable(id){
 
 addBookToLibrary (new Book("Serafin Masparrote", "Biologia 8°", 124, true));
 addBookToLibrary (new Book("Galileo Galilei", "Diagrama Veritate", 43, false));
+addBookToLibrary (new Book("Maquiavelo", "El Principe", 82, true));
+addBookToLibrary (new Book("Platon", "Dialogos", 841, true));
