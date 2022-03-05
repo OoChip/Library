@@ -17,25 +17,39 @@ pages.addEventListener("blur", checkValidityOfInput)
 addButton.addEventListener("click", createAndAddBook)
 
 function checkValidityOfInput (e){
+    
     let target = e.target.name
+
+    console.log(target, " ", e.target.validity.valid);
 
     switch (target){
         case "autor":
-            if (e.target.validity.valid)
-            autorValid = true
+            if (e.target.validity.valid){
+                autorValid = true
+                }else{
+                autorValid = false 
+                }
             break
         case "title":
-            if (e.target.validity.valid)
-            titleValid = true
+            if (e.target.validity.valid){
+                titleValid = true
+                }else{
+                titleValid = false 
+                }
             break
         case "pages":
-            if (e.target.validity.valid)
-            pagesValid = true
+            if (e.target.validity.valid){
+                pagesValid = true
+                }else{
+                pagesValid = false 
+                }
             break
     }
 
      if (autorValid && titleValid && pagesValid){
         addButton.disabled = false
+     }else{
+        addButton.disabled = true
      }
 }
 
@@ -57,10 +71,17 @@ function addBookToLibrary(newBook) {
 
 function createAndAddBook (e){
     addBookToLibrary (new Book(autor.value, title.value, pages.value, readed.checked))
+    reset()
+}
+
+function reset(){
     autor.value = ""
     title.value = ""
     pages.value = ""
     addButton.disabled = true
+    autorValid = false
+    titleValid = false
+    pagesValid = false
 }
 
 function draw (newBook){
@@ -131,9 +152,3 @@ function eraseBookInTable(id){
 
 addBookToLibrary (new Book("Serafin Masparrote", "Biologia 8°", 124, true));
 addBookToLibrary (new Book("Galileo Galilei", "Diagrama Veritate", 43, false));
-console.log(myLibrary);
-
-
-
-
-
